@@ -20,6 +20,9 @@ export default function Navbar() {
               <a>VIP</a>
             </Link>
           </li>
+          <li>
+            <button onClick={login}>Login</button>
+          </li>
         </ul>
       </nav>
     </>

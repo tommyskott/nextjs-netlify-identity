@@ -1,19 +1,19 @@
 import Head from "next/head";
 
-export default function Home() {
+export default function Vip() {
   return (
     <div className="container">
       <Head>
-        <title>Next.js Netlify Identity</title>
-        <meta name="description" content="" />
+        <title>VIP</title>
+        <meta name="description" content="VIP" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className="main">
-        <h1 className="title">Next.js Netlify Identity</h1>
+        <h1 className="title">VIP</h1>
 
         <p className="description">
-          Get started by editing <code className="code">pages/index.js</code>
+          You need to logged in to access this page!
         </p>
 
         <div className="grid">

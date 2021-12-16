@@ -20,12 +20,17 @@ export default function Navbar() {
               <a>VIP</a>
             </Link>
           </li>
-          <li>
-            <button onClick={login}>Login</button>
-          </li>
-          <li>
-            <button onClick={logout}>Logout</button>
-          </li>
+          {!user && (
+            <li>
+              <button onClick={login}>Login</button>
+            </li>
+          )}
+          {user && <li>{user.email}</li>}
+          {user && (
+            <li>
+              <button onClick={logout}>Logout</button>
+            </li>
+          )}
         </ul>
       </nav>
     </>

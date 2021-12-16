@@ -26,7 +26,11 @@ export const AuthContextProvider = ({ children }) => {
     netlifyIdentity.open();
   };
 
-  const context = { user, login };
+  const logout = () => {
+    netlifyIdentity.logout();
+  };
+
+  const context = { user, login, logout };
 
   return (
     <AuthContext.Provider value={context}>{children}</AuthContext.Provider>

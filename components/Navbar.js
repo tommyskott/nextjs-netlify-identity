@@ -3,7 +3,7 @@ import { useContext } from "react";
 import AuthContext from "./AuthContext";
 
 export default function Navbar() {
-  const { user, login } = useContext(AuthContext);
+  const { user, login, logout } = useContext(AuthContext);
   console.log(user);
 
   return (
@@ -22,6 +22,9 @@ export default function Navbar() {
           </li>
           <li>
             <button onClick={login}>Login</button>
+          </li>
+          <li>
+            <button onClick={logout}>Logout</button>
           </li>
         </ul>
       </nav>

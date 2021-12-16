@@ -1,4 +1,4 @@
-exports.handler = async () => {
+exports.handler = async (event, context) => {
   console.log("getting premium content...");
 
   const data = {
@@ -7,8 +7,15 @@ exports.handler = async () => {
     hey: 38,
   };
 
+  if (context.clientContext.user) {
+    return {
+      statusCode: 200,
+      body: JSON.stringify(data),
+    };
+  }
+
   return {
-    statusCode: 200,
-    body: JSON.stringify(data),
+    statusCode: 401,
+    body: JSON.stringify({ msg: "You need to login to do that." }),
   };
 };

@@ -1,6 +1,25 @@
+import { useContext, useEffect } from "react";
 import Head from "next/head";
+import AuthContext from "../components/AuthContext";
 
 export default function Vip() {
+  const { user, authReady } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (authReady) {
+      fetch(
+        "/.netlify/functions/premiumContent",
+        user && {
+          headers: {
+            Authorization: `Bearer ${user.token.access_token}`,
+          },
+        }
+      )
+        .then((res) => res.json())
+        .then((data) => console.log(data));
+    }
+  }, [user, authReady]);
+
   return (
     <div className="container">
       <Head>

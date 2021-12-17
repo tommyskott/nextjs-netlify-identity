@@ -1,9 +1,11 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import Head from "next/head";
 import AuthContext from "../components/AuthContext";
 
 export default function Vip() {
   const { user, authReady } = useContext(AuthContext);
+  const [vipContent, setVipContent] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     if (authReady) {
@@ -15,8 +17,21 @@ export default function Vip() {
           },
         }
       )
-        .then((res) => res.json())
-        .then((data) => console.log(data));
+        .then((res) => {
+          if (!res.ok) {
+            throw Error("Please login");
+          }
+
+          return res.json();
+        })
+        .then((data) => {
+          setVipContent(data);
+          setError(null);
+        })
+        .catch((err) => {
+          setError(err.message);
+          setVipContent(null);
+        });
     }
   }, [user, authReady]);
 
@@ -31,38 +46,25 @@ export default function Vip() {
       <main className="main">
         <h1 className="title">VIP</h1>
 
-        <p className="description">
-          You need to logged in to access this page!
-        </p>
+        {!authReady && <div>Loading...</div>}
+
+        {error && (
+          <div>
+            <p className="description">
+              You need to logged in to access this page!
+            </p>
+            <div>{error}</div>
+          </div>
+        )}
 
         <div className="grid">
-          <a href="https://nextjs.org/docs" className="card">
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className="card">
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className="card"
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="card"
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+          {vipContent &&
+            vipContent.map((vip) => {
+              <a href={vip.link} className="card">
+                <h2>Documentation &rarr;</h2>
+                <p>Find in-depth information about Next.js features and API.</p>
+              </a>;
+            })}
         </div>
       </main>
 

@@ -15,6 +15,7 @@ Try the demo at: [https://nextjs-netlify-identity-login.netlify.app](https://nex
 ```bash
 git clone git@github.com:tommyskott/nextjs-netlify-identity.git
 cd nextjs-netlify-identity
+npm i
 npm run dev
 ```
 

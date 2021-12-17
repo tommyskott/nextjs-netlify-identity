@@ -57,14 +57,28 @@ export default function Vip() {
           </div>
         )}
 
+        {vipContent && (
+          <div>
+            <p className="description">
+              Some fresh premium content just for you!
+            </p>
+          </div>
+        )}
+
         <div className="grid">
           {vipContent &&
-            vipContent.map((vip) => {
-              <a href={vip.link} className="card">
-                <h2>Documentation &rarr;</h2>
-                <p>Find in-depth information about Next.js features and API.</p>
-              </a>;
-            })}
+            vipContent.map((vip) => (
+              <a
+                href={vip.link}
+                className="card"
+                key={vip.title}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <h2>{vip.title}</h2>
+                <p>{vip.body}</p>
+              </a>
+            ))}
         </div>
       </main>
 

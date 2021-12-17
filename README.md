@@ -4,7 +4,7 @@
 
 A simple component to handle authentication with Netlify Identity, in a [Next.js](https://nextjs.org) project. Using `createContext`, `useEffect`, `useState` in a globally wrapped component.
 
-**Important!** You must deploy your site to Netlify and activate Identity, to make logging in and signing up work.
+**Important!** You must deploy your site to Netlify and activate Identity, to make logging in and signing up work. You will need the Next.js plugin installed on your live site, to make Next.js work properly on Netlify. That plugin is developed by Netlify and gets installed automatically on deploy. If deploy fails, check the logs and your build settings, then try to re-deploy again without cache.
 
 ## Demo site
 

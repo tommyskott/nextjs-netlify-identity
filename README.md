@@ -23,9 +23,9 @@ npm run dev
 
 When clicking the login button you will see the Netlify Identity Widget pop up. First time you will need to set your local development url: `http://localhost:3000`
 
-## Install Netlify CLI globally
+## Install Netlify cli globally
 
-Make it easier to work locally with Netlify serverless functions, by using [Netlify CLI](https://docs.netlify.com/cli/get-started/).
+Make it easier to work locally with Netlify serverless functions, by using [Netlify cli](https://docs.netlify.com/cli/get-started/).
 
 ### Install
 
